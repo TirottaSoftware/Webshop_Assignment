@@ -21,7 +21,6 @@ namespace Webshop
             {
                 cbProductType.Items.Add(item);
             }
-            
         }
 
         private void UpdateGUI()
@@ -66,6 +65,26 @@ namespace Webshop
 
             webshop.ProductAdded += hunterForm.OnProductAdded;
             webshop.ProductAdded += collectorForm.OnProductAdded;
+        }
+
+        private void lbProducts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedProduct = (Product)lbProducts.SelectedItem;
+            tbName.Text = selectedProduct.Name;
+            tbPrice.Text = selectedProduct.Price.ToString();
+            tbStock.Text = selectedProduct.Stock.ToString();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            var selectedProduct = (Product)lbProducts.SelectedItem;
+            string name = tbName.Text;
+            double price = double.Parse(tbPrice.Text);
+            int stock = int.Parse(tbStock.Text);
+            Enum.TryParse(cbProductType.SelectedItem.ToString(), out ProductType productType);
+            var newProduct = new Product(name, price, stock, productType);
+            webshop.UpdateProduct(selectedProduct, newProduct);
+            UpdateGUI();
         }
     }
 }

@@ -34,7 +34,9 @@ namespace Webshop
         }
         public void UpdateProduct(Product oldProduct, Product newProduct)
         {
-            //TODO: Implement UpdateProduct functionality
+            int oldProductIndex = this.products.IndexOf(oldProduct);
+            this.products.RemoveAt(oldProductIndex);
+            this.products.Insert(oldProductIndex, newProduct);
         }
         public List<Product> GetProducts() => this.products.ToList();
     }

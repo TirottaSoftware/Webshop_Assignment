@@ -53,6 +53,7 @@
             this.lbProducts.Name = "lbProducts";
             this.lbProducts.Size = new System.Drawing.Size(410, 303);
             this.lbProducts.TabIndex = 0;
+            this.lbProducts.SelectedIndexChanged += new System.EventHandler(this.lbProducts_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -84,6 +85,7 @@
             this.btnUpdate.TabIndex = 9;
             this.btnUpdate.Text = "&Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAddNew
             // 
